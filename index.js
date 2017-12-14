@@ -10,13 +10,13 @@ function translate(text, opts) {
     opts = opts || {};
 
     var e;
-    [opts.from, opts.to].forEach(function (lang) {
-        if (lang && !languages.isSupported(lang)) {
+    for (var i = 0, len = [opts.from, opts.to].length; i < len; i++) {
+        if ([opts.from, opts.to][i] && !languages.isSupported([opts.from, opts.to][i])) {
             e = new Error();
             e.code = 400;
-            e.message = 'The language \'' + lang + '\' is not supported';
+            e.message = 'The language \'' + [opts.from, opts.to][i] + '\' is not supported';
         }
-    });
+      }
     if (e) {
         return new Promise(function (resolve, reject) {
             reject(e);
