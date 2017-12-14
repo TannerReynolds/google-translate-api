@@ -72,10 +72,14 @@ function translate(text, opts) {
 
             var body = safeEval(res.body);
             for (var i = 0, len = body[0].length; i < len; i++) {
-                if(body[0][i]) {
                     result.text += body[0][i];
-                }
             }
+            /*body[0].forEach(function (obj) {
+                if (obj[0]) {
+                    result.text += obj[0];
+                }
+            });*/
+
             if (body[2] === body[8][0][0]) {
                 result.from.language.iso = body[2];
             } else {
